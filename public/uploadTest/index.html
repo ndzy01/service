@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>上传测试</title>
+    <script src="./jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="uploadForm">
+      <input id="file" type="file" />
+      <button id="upload" type="button">upload</button>
+    </div>
+    <script>
+      $('#upload').click(function () {
+        var formData = new FormData();
+        formData.append('file', $('#file')[0].files[0]);
+
+        $.ajax({
+          // url: "http://localhost:8888/upload/",
+          url: "http://www.ndzy01.com:8888/upload/",
+          type: 'POST',
+          cache: false,
+          data: formData,
+          processData: false,
+          contentType: false,
+        })
+          .done(function (res) {})
+          .fail(function (res) {});
+      });
+    </script>
+  </body>
+</html>

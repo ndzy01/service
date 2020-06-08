@@ -11,9 +11,11 @@ const app = express();
 app.set('port', process.env.PORT || config.port);
 utils.dirExists(config.publicFolder);
 utils.dirExists(config.uploadFolder);
+utils.dirExists(config.testUpload);
 
-app.use('/uploads', express.static(path.resolve(__dirname, '../upload')));
-app.use('/', express.static(path.resolve(__dirname, '../public')));
+app.use('/uploads', express.static(path.resolve(__dirname, '../ndzy/upload')));
+app.use('/', express.static(path.resolve(__dirname, '../ndzy/public')));
+app.use('/testUpload', express.static(path.resolve(__dirname, '../ndzy/testUpload')));
 
 app.use(
   bodyParser.urlencoded({

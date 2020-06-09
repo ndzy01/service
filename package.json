@@ -5,7 +5,8 @@
   "author": "zhang yi <2326962137@qq.com>",
   "license": "MIT",
   "scripts": {
-    "watch": "tsc -w -p ."
+    "watch": "tsc -w -p .",
+    "start": "npx ts-node 8888.ts "
   },
   "dependencies": {
     "body-parser": "^1.19.0",

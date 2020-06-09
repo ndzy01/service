@@ -7,9 +7,9 @@
 import * as path from 'path';
 // import { dirExists } from "./src/util/mFile";
 
-const uploadFolder = path.resolve(__dirname, '../ndzy/upload');
-const publicFolder = path.resolve(__dirname, '../ndzy/public');
-const testUpload = path.resolve(__dirname, '../ndzy/testUpload');
+const uploadFolder = path.resolve(__dirname, './ndzy/upload');
+const publicFolder = path.resolve(__dirname, './ndzy/public');
+const testUpload = path.resolve(__dirname, './ndzy/testUpload');
 
 export default {
   originUrl: '*', //允许所有访问

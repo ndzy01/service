@@ -10,7 +10,7 @@ layout.get('/layout/getLogo', (req: any, res) => {
     code: 0,
     msg: 'ok',
     data: {
-      url: 'http://www.ndzy01.com:3889/uploads/2020-6-2-17-47-8-32x32.ico',
+      url: 'http://www.ndzy01.com:8888/uploads/2020-6-15-9-25-48-32x32.ico',
     },
   });
 });

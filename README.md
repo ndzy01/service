@@ -1,10 +1,3 @@
-<!--
- * @Author: ndzy
- * @Date: 2020-03-05 08:07:33
- * @LastEditTime: 2020-03-12 06:33:54
- * @LastEditors: ndzy
- -->
-
 # express
 
 yarn add body-parser cors express

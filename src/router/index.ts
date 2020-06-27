@@ -14,6 +14,7 @@ import qqEmail from './utilRouter/qqEmail';
 import upload from './utilRouter/upload';
 
 import tree from './tree';
+import im from './im';
 import layout from './layout';
 
 export default {
@@ -22,5 +23,6 @@ export default {
   kaptcha,
   upload,
   tree,
+  im,
   layout,
 };

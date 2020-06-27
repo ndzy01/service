@@ -15,7 +15,10 @@ utils.dirExists(config.testUpload);
 
 app.use('/uploads', express.static(path.resolve(__dirname, './ndzy/upload')));
 app.use('/', express.static(path.resolve(__dirname, './ndzy/public')));
-app.use('/testUpload', express.static(path.resolve(__dirname, './ndzy/testUpload')));
+app.use(
+  '/testUpload',
+  express.static(path.resolve(__dirname, './ndzy/testUpload'))
+);
 
 app.use(
   bodyParser.urlencoded({
@@ -41,6 +44,7 @@ app.use('/', router.kaptcha);
 app.use('/', router.upload);
 
 app.use('/', router.tree);
+app.use('/', router.im);
 app.use('/', router.layout);
 
 app.listen(app.get('port'), () => {

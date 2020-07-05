@@ -15,6 +15,7 @@ import upload from './utilRouter/upload';
 
 import tree from './tree';
 import im from './im';
+import workRecords from './workRecords'
 import layout from './layout';
 
 export default {
@@ -24,5 +25,6 @@ export default {
   upload,
   tree,
   im,
+  workRecords,
   layout,
 };

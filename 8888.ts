@@ -45,6 +45,7 @@ app.use('/', router.upload);
 
 app.use('/', router.tree);
 app.use('/', router.im);
+app.use('/', router.workRecords);
 app.use('/', router.layout);
 
 app.listen(app.get('port'), () => {

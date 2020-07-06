@@ -132,11 +132,18 @@ workRecords.post('/workRecord/search', (req: any, res) => {
     LIMIT ${(page - 1) * size},${size}
     `;
   }
-  db.mysql_db(sqlSearch, data).then((result: any) => {
-    res.send({
-      code: 0,
-      msg: 'ok',
-      data: result,
+  const sql = `
+  select id from workRecords
+  `;
+  db.mysql_db(sql, data).then((result1: any) => {
+    const totalRecords = result1.length;
+    db.mysql_db(sqlSearch, data).then((result: any) => {
+      res.send({
+        code: 0,
+        msg: 'ok',
+        data: result,
+        totalRecords,
+      });
     });
   });
 });

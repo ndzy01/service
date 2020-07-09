@@ -23,3 +23,6 @@ yarn add svg-captcha
 # multer 文件上传
 
 yarn add multer
+
+# mock
+npm install mockjs @types/mockjs

@@ -15,8 +15,10 @@ import upload from './utilRouter/upload';
 
 import tree from './tree';
 import im from './im';
-import workRecords from './workRecords'
+import workRecords from './workRecords';
 import layout from './layout';
+
+import mockTest from './mock/test';
 
 export default {
   routerUtils,
@@ -27,4 +29,5 @@ export default {
   im,
   workRecords,
   layout,
+  mockTest,
 };

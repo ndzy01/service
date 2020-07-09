@@ -63,79 +63,31 @@ workRecords.post('/workRecord/search', (req: any, res) => {
   const page = req.body.page;
   const size = req.body.size;
   let sqlSearch;
-  const taskId = () => {
-    if (req.body.taskId) {
-      return true;
-    } else {
-      return false;
+  let arr = [
+    { taskId: req.body.taskId },
+    { taskDescription: req.body.taskDescription },
+    { taskStatus: req.body.taskStatus },
+    { createTime: req.body.createTime },
+  ];
+  sqlSearch = 'SELECT w.* FROM workRecords AS w Where 1=1';
+  arr.map((item) => {
+    if (item.taskId) {
+      sqlSearch += ` AND w.taskId LIKE '%${req.body.taskId}%'`;
+      return null;
+    } else if (item.taskDescription) {
+      sqlSearch += ` AND w.taskDescription LIKE '%${req.body.taskDescription}%'`;
+      return null;
+    } else if (item.taskStatus) {
+      sqlSearch += ` AND w.taskStatus LIKE '%${req.body.taskStatus}%'`;
+      return null;
+    } else if (item.createTime) {
+      sqlSearch += ` AND w.createTime LIKE '%${req.body.createTime}%'`;
+      return null;
     }
-  };
-  const taskDescription = () => {
-    if (req.body.taskDescription) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  const taskStatus = () => {
-    if (req.body.taskStatus) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  const createTime = () => {
-    if (req.body.createTime) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  if (
-    !req.body.taskId &&
-    !req.body.taskDescription &&
-    !req.body.taskStatus &&
-    !req.body.createTime
-  ) {
-    sqlSearch = `
-  SELECT
-    w.* 
-  FROM
-    workRecords AS w 
-  ORDER BY
-    w.createTime DESC 
-    LIMIT ${(page - 1) * size},${size}
-    `;
-  } else {
-    sqlSearch = `
-  SELECT
-    w.* 
-  FROM
-    workRecords AS w 
-  WHERE
-   ${req.body.taskId ? `w.taskId LIKE '%${req.body.taskId}%'` : ''}${
-      taskId() && (taskStatus() || createTime() || taskDescription())
-        ? ' AND '
-        : ''
-    }
-   ${
-     req.body.taskDescription
-       ? `w.taskDescription LIKE '%${req.body.taskDescription}%'`
-       : ''
-   }${taskDescription() && (taskStatus() || createTime()) ? ' AND ' : ''}
-   ${req.body.taskStatus ? `w.taskStatus = ${req.body.taskStatus}` : ''} ${
-      taskStatus() && createTime() ? ' AND ' : ''
-    }
-   ${req.body.createTime ? `w.createTime LIKE '%${req.body.createTime}%'` : ''}
-  ORDER BY
-    w.createTime DESC 
-    LIMIT ${(page - 1) * size},${size}
-    `;
-  }
-  const sql = `
-  select id from workRecords
-  `;
-  db.mysql_db(sql, data).then((result1: any) => {
+  });
+  const sqlSearch1 = sqlSearch + ' ORDER BY w.createTime DESC';
+  sqlSearch += ` ORDER BY w.createTime DESC LIMIT ${(page - 1) * size},${size}`;
+  db.mysql_db(sqlSearch1, data).then((result1: any) => {
     const totalRecords = result1.length;
     db.mysql_db(sqlSearch, data).then((result: any) => {
       res.send({

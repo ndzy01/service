@@ -6,7 +6,7 @@ const data = [];
 
 workRecords.post('/workRecord/getRecordByTaskId', (req: any, res) => {
   const taskId = req.body.taskId;
-
+  
   const sqlGetRecordByTaskId = `
   SELECT id FROM workRecords WHERE workRecords.taskId='${taskId}';
   `;
@@ -174,31 +174,5 @@ workRecords.post('/workRecord/show', function (req, res, next) {
     });
   });
 });
-// workRecords.post('/tree/delete', function (req, res, next) {
-//   const sid = req.body.sid;
-//   const sql1 = `
-//   SELECT * FROM tree WHERE FIND_IN_SET(pid,getChild('${sid}'));
-//   `;
 
-//   db.mysql_db(sql1, data).then((result: any) => {
-//     if (result.length > 0) {
-//       res.send({
-//         code: 0,
-//         msg: '不可以删除！',
-//         data: null,
-//       });
-//     } else {
-//       const sql = `
-//   DELETE FROM tree WHERE sid= '${sid}'
-//   `;
-//       db.mysql_db(sql, data).then((result: any) => {
-//         res.send({
-//           code: 0,
-//           msg: 'ok',
-//           data: null,
-//         });
-//       });
-//     }
-//   });
-// });
 export default workRecords;

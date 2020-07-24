@@ -78,6 +78,23 @@ layout.get('/layout/menu', (req: any, res) => {
               },
             ],
           },
+          {
+            id: 13,
+            pId: 10,
+            name: '小功能',
+            url: '/clock',
+            menuIcon: 'worRecordk',
+            children: [
+              {
+                id: 131,
+                pId: 13,
+                name: '时钟',
+                url: '/clock',
+                menuIcon: '',
+                children: [],
+              },
+            ],
+          },
         ],
       },
     ],
